@@ -32,6 +32,7 @@ export function App() {
   const [inputLetter, setInputLetter] = useState('');
   const [parcoursFlag, setParcoursFlag] = useState(0);
   const [pv, setPV] = useState(11);
+  const [win, setWin] = useState(false);
 
   const inputRef = useRef(null);
 
@@ -39,7 +40,7 @@ export function App() {
 
     const fetchWord = async () => {
 
-      console.log('Loading word...');
+      // console.log('Loading word...');
 
       fetch('https://node-hangman-api-production.up.railway.app/', {
         method: 'POST',
@@ -62,7 +63,7 @@ export function App() {
     }
 
     fetchWord();
-    console.log('Mot:', word);
+    // console.log('Mot:', word);
 
 
   }, []);
@@ -74,7 +75,7 @@ export function App() {
       const Letter = inputLetter.toLowerCase();
 
       if (!checkLetter(Letter, AutorisLetter)) {
-        console.log('Mauvais Input:', Letter);
+        // console.log('Mauvais Input:', Letter);
         return;
       } else {
         if (word.includes(Letter)) {
@@ -113,7 +114,12 @@ export function App() {
     AffichageWord();
   }, [word, parcoursFlag]);
 
-  console.log('InputRef', inputRef);
+  useEffect(() => {
+    if (word != '' & wordView === word) {
+      console.log('Vous avez gagné !');
+      setWin(true);
+    }
+  }, [wordView]);
 
   return (
     <div>
@@ -127,6 +133,12 @@ export function App() {
         <>
           <h2>Vous avez perdu !</h2>
           <p>Le mot était "{word}"</p>
+        </>
+      )}
+      {win && (
+        <>
+          <h2>Vous avez gagné !</h2>
+          <p>Nombre de coup : {parcoursFlag}</p>
         </>
       )}
     </div>
