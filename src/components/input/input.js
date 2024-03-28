@@ -1,6 +1,5 @@
 export const Input = ({ children, setInput, disabled, refObject }) => {
 
-    console.log('Input:', refObject);
     const onSubmitHandler = (e) => {
         e.preventDefault();
 
