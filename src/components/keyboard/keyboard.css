@@ -1,0 +1,28 @@
+.keyboard {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-template-areas:
+        "a z e r t y u i o p"
+        "q s d f g h j k l m"
+        ". w x c v b n . suppr suppr";
+    gap: 5px;
+    height: 190px;
+    width: 500px;
+}
+
+.keyboard__keycap--good {
+    background-color: green;
+}
+
+.keyboard__keycap--wrong {
+    background-color: red;
+}
+
+.keyboard__keycap--active {
+    background-color: blue;
+}
+
+.keyboard__keycap--suppr {
+    grid-area: suppr;;
+}

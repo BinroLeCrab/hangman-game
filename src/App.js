@@ -1,10 +1,13 @@
 //* -- Import React
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 //* -- Import Components
 
 import { Word } from './components/word/word';
+import { Input } from './components/input/input';
+import { BadLetter } from './components/badLetter/badLetter';
+import { Keyboard } from './components/keyboard/keyboard.js';
 
 //* -- Import utils
 
@@ -13,12 +16,13 @@ import { checkLetter } from './utils/checkInput.js';
 //* -- Import Styles
 
 import './App.css';
-import { Input } from './components/input/input';
-import { BadLetter } from './components/badLetter/badLetter';
 
 //? ----- App.js -----
 
 export function App() {
+
+  const AutorisLetter = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z'];
+
 
   const [word, setWord] = useState('');
   const [loadWord, setLoading] = useState(false);
@@ -28,6 +32,8 @@ export function App() {
   const [inputLetter, setInputLetter] = useState('');
   const [parcoursFlag, setParcoursFlag] = useState(0);
   const [pv, setPV] = useState(11);
+
+  const inputRef = useRef(null);
 
   useEffect(() => {
 
@@ -67,15 +73,15 @@ export function App() {
 
       const Letter = inputLetter.toLowerCase();
 
-      if (!checkLetter(Letter)) {
+      if (!checkLetter(Letter, AutorisLetter)) {
         console.log('Mauvais Input:', Letter);
         return;
       } else {
         if (word.includes(Letter)) {
-          Letter != '' && setLettresGood([...lettresGood, Letter]);
+          Letter !== '' && setLettresGood([...lettresGood, Letter]);
         } else {
           if (!lettresWrong.includes(Letter)) {
-            Letter != '' && setLettresWrong([...lettresWrong, Letter]);
+            Letter !== '' && setLettresWrong([...lettresWrong, Letter]);
             setPV(pv - 1);
           }
         }
@@ -107,12 +113,15 @@ export function App() {
     AffichageWord();
   }, [word, parcoursFlag]);
 
+  console.log('InputRef', inputRef);
+
   return (
     <div>
       <h1>Hangman Game</h1>
       <p>PV: {pv}</p>
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
-      < Input setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre</Input>
+      < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre</Input>
+      < Keyboard lettresGood={lettresGood} lettresWrong={lettresWrong} AutorisLetter={AutorisLetter} refInput={inputRef} disabled={pv <= 0 ? true : false} />
       < BadLetter lettresWrong={lettresWrong} />
       {pv <= 0 && (
         <>
