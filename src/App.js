@@ -16,6 +16,7 @@ import { checkLetter } from './utils/checkInput.js';
 //* -- Import Styles
 
 import './App.css';
+import { loadFromLocalStorage, saveToLocalStorage } from './utils/local-storage-manager.js';
 
 //? ----- App.js -----
 
@@ -33,6 +34,7 @@ export function App() {
   const [parcoursFlag, setParcoursFlag] = useState(0);
   const [pv, setPV] = useState(11);
   const [win, setWin] = useState(false);
+  const [betterScore, setBetterScore] = useState(0);
 
   const inputRef = useRef(null);
 
@@ -63,6 +65,9 @@ export function App() {
     }
 
     fetchWord();
+
+    loadFromLocalStorage('betterScore') && setBetterScore(loadFromLocalStorage('betterScore'));
+    console.log('Meilleur score:', betterScore);
     // console.log('Mot:', word);
 
 
@@ -118,6 +123,10 @@ export function App() {
     if (word != '' & wordView === word) {
       console.log('Vous avez gagné !');
       setWin(true);
+      if (parcoursFlag < betterScore) {
+        saveToLocalStorage('betterScore', parcoursFlag);
+        setBetterScore(parcoursFlag);
+      }
     }
   }, [wordView]);
 
@@ -139,6 +148,7 @@ export function App() {
         <>
           <h2>Vous avez gagné !</h2>
           <p>Nombre de coup : {parcoursFlag}</p>
+          <p>Meilleur score : {betterScore}</p>
         </>
       )}
     </div>
