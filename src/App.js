@@ -9,6 +9,7 @@ import { Input } from './components/input/input';
 import { BadLetter } from './components/badLetter/badLetter';
 import { Keyboard } from './components/keyboard/keyboard.js';
 import { PvBar } from './components/pvBar/pvBar.js';
+import { Score } from './components/score/score.js';
 
 //* -- Import utils
 
@@ -141,6 +142,7 @@ export function App() {
   return (
     <div>
       <h1>Hangman Game</h1>
+      < Score score={betterScore == 1000 ? '--' : betterScore} />
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
       < PvBar pv={pv} />
       < BadLetter lettresWrong={lettresWrong} />
