@@ -1,0 +1,42 @@
+.pv__container {
+    display: grid;
+    grid-template-columns: repeat(12, fit-content(100%));
+    grid-template-rows: 30px;
+    gap: 10px;
+    /* align-items: center; */
+
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid var(--border);
+}
+
+.pv__title {
+    margin-right: 10px;
+}
+
+.pv__point {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+.pv__point--empty {
+    background-color: var(--light-grey);
+}
+
+.pv__point--green {
+    background-color: var(--green);
+}
+
+.pv__point--red {
+    background-color: var(--red);
+}
+
+.pv__point--yellow {
+    background-color: var(--yellow);
+}
+
+.pv_alt {
+    display: none;
+}

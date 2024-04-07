@@ -8,15 +8,16 @@ import { Word } from './components/word/word';
 import { Input } from './components/input/input';
 import { BadLetter } from './components/badLetter/badLetter';
 import { Keyboard } from './components/keyboard/keyboard.js';
+import { PvBar } from './components/pvBar/pvBar.js';
 
 //* -- Import utils
 
 import { checkLetter } from './utils/checkInput.js';
+import { loadFromLocalStorage, saveToLocalStorage } from './utils/local-storage-manager.js';
 
 //* -- Import Styles
 
 import './App.css';
-import { loadFromLocalStorage, saveToLocalStorage } from './utils/local-storage-manager.js';
 
 //? ----- App.js -----
 
@@ -140,11 +141,11 @@ export function App() {
   return (
     <div>
       <h1>Hangman Game</h1>
-      <p>PV: {pv}</p>
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
+      < PvBar pv={pv} />
+      < BadLetter lettresWrong={lettresWrong} />
       < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre...</Input>
       < Keyboard lettresGood={lettresGood} lettresWrong={lettresWrong} AutorisLetter={AutorisLetter} refInput={inputRef} disabled={pv <= 0 ? true : false} />
-      < BadLetter lettresWrong={lettresWrong} />
       {pv <= 0 && (
         <>
           <h2>Vous avez perdu !</h2>
