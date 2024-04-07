@@ -142,7 +142,7 @@ export function App() {
       <h1>Hangman Game</h1>
       <p>PV: {pv}</p>
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
-      < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre</Input>
+      < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre...</Input>
       < Keyboard lettresGood={lettresGood} lettresWrong={lettresWrong} AutorisLetter={AutorisLetter} refInput={inputRef} disabled={pv <= 0 ? true : false} />
       < BadLetter lettresWrong={lettresWrong} />
       {pv <= 0 && (

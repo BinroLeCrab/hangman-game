@@ -1,3 +1,5 @@
+import './input.css';
+
 export const Input = ({ children, setInput, disabled, refObject }) => {
 
     const onSubmitHandler = (e) => {
@@ -14,9 +16,11 @@ export const Input = ({ children, setInput, disabled, refObject }) => {
     };
 
     return (
-        <form onSubmit={onSubmitHandler}>
-            <input type="text" placeholder={children} ref={refObject} maxLength={1} disabled={disabled} autoFocus required/>
-            <button type="submit">Valider</button>
+        <form onSubmit={onSubmitHandler} className='insert__container'>
+            <input className='insert__input' type="text" placeholder={children} ref={refObject} maxLength={1} disabled={disabled} autoFocus required/>
+            <button className='insert__submit' type="submit">
+                <span className='insert__submit__text'>Valider</span>
+            </button>
         </form>
     );
 }
