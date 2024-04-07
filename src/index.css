@@ -30,3 +30,19 @@ body > * {
   margin: 0;
   padding: 0;
 }
+
+/*? --- Global  */
+
+.surlignage::after {
+  content: '';
+  position: relative;
+  display: block;
+  width: 105%;
+  height: 20px;
+  background-color: var(--green);
+  border-radius: 10px;
+  top: -18px;
+  left: -8px;
+  opacity: 0.8;
+  z-index: -1;
+}

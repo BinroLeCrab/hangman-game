@@ -1,0 +1,28 @@
+.word__container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: fit-content(100%) 1fr;
+    height: 300px;
+    align-items: center;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid var(--border);
+}
+
+.word__title {
+    margin: 0px;
+    width: fit-content;
+}
+
+.word__content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-transform: uppercase;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+}
