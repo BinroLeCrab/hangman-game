@@ -5,22 +5,54 @@
     grid-template-areas:
         "a z e r t y u i o p"
         "q s d f g h j k l m"
-        ". w x c v b n . suppr suppr";
-    gap: 5px;
-    height: 190px;
-    width: 500px;
+        ". w x c v b n suppr suppr .";
+    gap: 8px;
+    width: 95vw;
+    height: 40vw;
+    max-height: 190px;
+    max-width: 500px;
+}
+
+.keyboard__keycap {
+
+    font-family: 'Inter', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 600;
+    text-transform: capitalize;
+
+    background-color: var(--secondary-background);
+    border: 1px solid var(--border);
+    border-radius: 5px;
+
+    cursor: pointer;
+}
+
+.keyboard__keycap:hover, .keyboard__keycap:focus {
+    background-color: var(--border);
 }
 
 .keyboard__keycap--good {
-    background-color: green;
+    background-color: var(--green);
+    border: 1px solid var(--green);
+    opacity: 0.8;
+}
+
+.keyboard__keycap--good:hover, .keyboard__keycap--good:focus {
+    background-color: var(--green);
+    opacity: 0.8;
+    cursor: initial;
 }
 
 .keyboard__keycap--wrong {
-    background-color: red;
+    background-color: var(--red);
+    border: 1px solid var(--red);
+    opacity: 0.8;
 }
 
-.keyboard__keycap--active {
-    background-color: blue;
+.keyboard__keycap--wrong:hover, .keyboard__keycap--wrong:focus {
+    background-color: var(--red);
+    opacity: 0.8;
+    cursor: initial;
 }
 
 .keyboard__keycap--suppr {
