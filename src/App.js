@@ -66,7 +66,12 @@ export function App() {
 
     fetchWord();
 
-    loadFromLocalStorage('betterScore') && setBetterScore(loadFromLocalStorage('betterScore'));
+    if (loadFromLocalStorage('betterScore')) {
+      setBetterScore(loadFromLocalStorage('betterScore'));
+    } else {
+      setBetterScore(1000);
+      saveToLocalStorage('betterScore', 1000);
+    }
     console.log('Meilleur score:', betterScore);
     // console.log('Mot:', word);
 
@@ -123,9 +128,11 @@ export function App() {
     if (word != '' & wordView === word) {
       console.log('Vous avez gagné !');
       setWin(true);
+      console.log('meilleur score:', betterScore)
       if (parcoursFlag < betterScore) {
         saveToLocalStorage('betterScore', parcoursFlag);
         setBetterScore(parcoursFlag);
+        console.log('Nouveau meilleur score:', betterScore);
       }
     }
   }, [wordView]);
