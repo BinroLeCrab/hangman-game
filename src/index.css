@@ -4,6 +4,27 @@
   box-sizing: border-box;
 }
 
+:root {
+  --black: #000000;
+  --dark-grey: #202020;
+  --light-grey: #E0E8F0;
+  --background: #FFFEFE;
+  --secondary-background: #F1F5F9;
+  --border: #E2E8F0;
+
+  --green: #00DC82;
+  --red: #EF4444;
+  --yellow: #F59E0B;
+}
+
+
 body {
   font-family: 'Inter', sans-serif;
+  color: var(--black);
+  background-color: var(--background);
+}
+
+body > * {
+  margin: 0;
+  padding: 0;
 }
