@@ -1,4 +1,6 @@
 .keyboard {
+    grid-area: k;
+    
     display: grid;
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(3, 1fr);

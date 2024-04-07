@@ -1,18 +1,24 @@
 .pv__container {
+    grid-area: p;
+
     display: grid;
-    grid-template-columns: repeat(12, fit-content(100%));
-    grid-template-rows: 30px;
+    /* grid-template-columns: repeat(12, fit-content(100%));
+    grid-template-rows: 30px; */
+    grid-template-columns: 30px;
+    grid-template-rows: repeat(12, fit-content(100%));
     gap: 10px;
     /* align-items: center; */
 
     padding: 15px;
     border-radius: 15px;
     border: 1px solid var(--border);
+    height: fit-content;
+    width: fit-content;
 }
-
+/* 
 .pv__title {
     margin-right: 10px;
-}
+} */
 
 .pv__point {
     display: inline-block;

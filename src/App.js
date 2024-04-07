@@ -140,27 +140,33 @@ export function App() {
   }, [wordView]);
 
   return (
-    <div>
-      <h1>Hangman Game</h1>
+    <main>
+      <h1>Jeu du Pendu !</h1>
       < Score score={betterScore == 1000 ? '--' : betterScore} />
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
       < PvBar pv={pv} />
       < BadLetter lettresWrong={lettresWrong} />
       < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre...</Input>
       < Keyboard lettresGood={lettresGood} lettresWrong={lettresWrong} AutorisLetter={AutorisLetter} refInput={inputRef} disabled={pv <= 0 ? true : false} />
-      {pv <= 0 && (
-        <>
-          <h2>Vous avez perdu !</h2>
-          <p>Le mot était "{word}"</p>
-        </>
+      {pv > 0 && (
+        <section className='PopUp__Section'>
+          <div className='PopUp__Container'>
+            <h2>Vous avez perdu !</h2>
+            <p>Le mot était "{word}"</p>
+            <a href='/' className='PopUp__Button'>Rejouer</a>
+          </div>
+        </section>
       )}
       {win && (
-        <>
-          <h2>Vous avez gagné !</h2>
-          <p>Nombre de coup : {parcoursFlag}</p>
-          <p>Meilleur score : {betterScore}</p>
-        </>
+        <section className='PopUp__Section'>
+          <div className='PopUp__Container'>
+            <h2>Vous avez gagné !</h2>
+            <p>Nombre de coup : {parcoursFlag}</p>
+            <p>Meilleur score : {betterScore}</p>
+            <a href='/' className='PopUp__Button'>Rejouer</a>
+          </div>
+        </section>
       )}
-    </div>
+    </main>
   );
 }

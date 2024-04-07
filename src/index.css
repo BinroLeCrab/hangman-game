@@ -1,6 +1,6 @@
 *,
 *::before,
-*::after{
+*::after {
   box-sizing: border-box;
 }
 
@@ -24,9 +24,11 @@ body {
   font-family: 'Inter', sans-serif;
   color: var(--black);
   background-color: var(--background);
+  margin: 0;
+  padding: 0;
 }
 
-body > * {
+body>* {
   margin: 0;
   padding: 0;
 }
@@ -51,4 +53,32 @@ body > * {
   left: -8px;
   opacity: 0.8;
   z-index: -1;
+}
+
+/*? --- Main  */
+
+main {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: repeat(9, 1fr);
+  grid-template-areas:
+    "h h h h h h h h h h h h"
+    "w w w w w w w b b b b p"
+    "w w w w w w w b b b b p"
+    "w w w w w w w b b b b p"
+    ". . . . i i i i . . . p"
+    ". k k k k k k k k k k p"
+    ". k k k k k k k k k k p"
+    ". k k k k k k k k k k p"
+    ". . . . . . . . . . . .";
+  justify-items: center;
+
+  gap: 30px;
+  padding: 30px;
+  width: 100vw;
+  height: 100vh;
+}
+
+main>h1 {
+  grid-area: h;
 }
