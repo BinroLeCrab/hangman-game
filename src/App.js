@@ -141,28 +141,29 @@ export function App() {
 
   return (
     <main>
-      <h1>Jeu du Pendu !</h1>
+      <h1>🪑 Jeu du Pendu</h1>
       < Score score={betterScore == 1000 ? '--' : betterScore} />
       < Word>{loadWord ? wordView : 'en chargement...'}</Word>
       < PvBar pv={pv} />
       < BadLetter lettresWrong={lettresWrong} />
       < Input refObject={inputRef} setInput={setInputLetter} disabled={pv <= 0 ? true : false}>Entrez une lettre...</Input>
       < Keyboard lettresGood={lettresGood} lettresWrong={lettresWrong} AutorisLetter={AutorisLetter} refInput={inputRef} disabled={pv <= 0 ? true : false} />
-      {pv > 0 && (
+      {pv <= 0 && (
         <section className='PopUp__Section'>
-          <div className='PopUp__Container'>
-            <h2>Vous avez perdu !</h2>
-            <p>Le mot était "{word}"</p>
+          <div className='PopUp__container'>
+            <h2>Vous avez perdu ! 🤣</h2>
+            <p>Le mot était <span className='bold'>"{word}"</span></p>
             <a href='/' className='PopUp__Button'>Rejouer</a>
           </div>
         </section>
       )}
       {win && (
         <section className='PopUp__Section'>
-          <div className='PopUp__Container'>
-            <h2>Vous avez gagné !</h2>
-            <p>Nombre de coup : {parcoursFlag}</p>
-            <p>Meilleur score : {betterScore}</p>
+          <div className='PopUp__container'>
+            <h2>Bravo vous avez gagné !✨</h2>
+            <p>Le mot était bien <span className='bold'>"{word}"</span></p>
+            <p><span className='bold'>Nombre de coup</span> {parcoursFlag}</p>
+            <p><span className='bold'>Votre Meilleur score</span> {betterScore}</p>
             <a href='/' className='PopUp__Button'>Rejouer</a>
           </div>
         </section>

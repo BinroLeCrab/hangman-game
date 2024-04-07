@@ -35,8 +35,14 @@ body>* {
 
 /*? --- Global  */
 
+.bold {
+  font-weight: 700;
+}
+
 .title {
   font-size: 1.5rem;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
   width: fit-content;
   margin: 0;
 }
@@ -81,4 +87,91 @@ main {
 
 main>h1 {
   grid-area: h;
+  margin: 0;
+}
+
+@media (max-width: 980px) {
+  main {
+    grid-template-areas:
+      "h h h h h h h h h h h h"
+      "w w w w w w w b b b b b"
+      "w w w w w w w b b b b b"
+      "p p p p p p p p p p p p"
+      ". . . . i i i i . . . ."
+      ". k k k k k k k k k k ."
+      ". k k k k k k k k k k ."
+      ". k k k k k k k k k k ."
+      ". . . . . . . . . . . .";
+    gap: 20px;
+  }
+}
+
+@media (max-width: 700px) {
+  main {
+    grid-template-areas:
+      "h h h h h h h s s s s s"
+      "w w w w w w w w w w w w"
+      "w w w w w w w w w w w w"
+      "p p p p p p p p p p p p"
+      "i i i i i i i i i i i i"
+      "k k k k k k k k k k k k"
+      "k k k k k k k k k k k k"
+      "k k k k k k k k k k k k"
+      ". . . . . . . . . . . .";
+    gap: 20px;
+
+    padding: 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+  .title {
+    font-size: 1.2rem;
+  }
+}
+
+/*? --- PopUpSection  */
+
+.PopUp__Section {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+}
+
+.PopUp__container {
+  background-color: var(--background);
+  border-radius: 15px;
+  padding: 30px;
+  border: 1px solid var(--border);
+  text-align: center;
+}
+
+.PopUp__Button {
+  display: block;
+  text-transform: capitalize;
+  font-size: 1.2rem;
+  font-weight: 700;
+  background-color: var(--green);
+  color: var(--black);
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.3s;
+}
+
+.PopUp__Button:hover {
+  background-color: var(--dark-green);
 }

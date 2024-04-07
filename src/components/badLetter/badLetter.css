@@ -26,7 +26,15 @@
     background-color: var(--red);
     border-radius: 5px;
     width: 40px;
+    height: -webkit-fit-content;
+    height: -moz-fit-content;
     height: fit-content;
     text-align: center;
     padding: 10px 12px;
+}
+
+@media (max-width: 700px) {
+    .badLetter__container {
+        display: none;
+    }
 }
